@@ -16,7 +16,9 @@ const flash      = require("connect-flash");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/betun-back2', {useMongoClient: true})
+.connect('mongodb://betun2:Parial2010.@ds221292.mlab.com:21292/betun', {useMongoClient: true})
+  
+
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {

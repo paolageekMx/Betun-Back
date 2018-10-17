@@ -27,11 +27,16 @@ authRoutes.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const rol = req.body.role;
+  const nombre = req.body.nombre;
+  const ap_paterno = req.body.ap_paterno;
+  const ap_materno = req.body.ap_materno;
+  const mail = req.body.mail;
+  
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
   }
-
+  
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
       res.render("auth/signup", { message: "The username already exists" });
@@ -44,7 +49,11 @@ authRoutes.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      role:"teacher"
+      rol,
+      nombre,
+      ap_paterno,
+      ap_materno,
+      mail
     });
 
     newUser.save((err) => {
